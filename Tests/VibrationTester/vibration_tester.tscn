@@ -1,0 +1,557 @@
+[gd_scene load_steps=11 format=3 uid="uid://dsah1nkbnqux8"]
+
+[ext_resource type="Script" path="res://addons/Buzz/scripts/Tests/VibrationTester.gd" id="1_v2qtc"]
+[ext_resource type="Texture2D" uid="uid://c83uicuuq6tcg" path="res://addons/Buzz/Zacksly_Icons/Xbox Series Button Icons and Controls/Controller Images/Outline/Outline White 4k.png" id="2_31wmk"]
+
+[sub_resource type="Curve" id="Curve_60ps4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.519802, 0.990909), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_6fi8w"]
+_data = [Vector2(0.0247525, 0), 0.0, 0.0, 0, 0, Vector2(0.509901, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcua2"]
+bg_color = Color(0.152941, 0.152941, 0.152941, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdhbx"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s58xr"]
+bg_color = Color(0.184314, 0.184314, 0.184314, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 10
+anti_aliasing = false
+
+[sub_resource type="Animation" id="Animation_82e1h"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_h0uot"]
+resource_name = "Shake"
+length = 0.05
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.02, 0.03, 0.04, 0.05),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(10, 6), Vector2(-8, -10), Vector2(0, 10), Vector2(-12, -5), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_14dkj"]
+_data = {
+"RESET": SubResource("Animation_82e1h"),
+"Shake": SubResource("Animation_h0uot")
+}
+
+[node name="VibrationTester" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 7.0
+offset_right = 1.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v2qtc")
+TestLowCurve = SubResource("Curve_60ps4")
+TestHighCurve = SubResource("Curve_6fi8w")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 41.0
+offset_right = 81.0
+offset_bottom = 40.0
+
+[node name="Controls Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 814.0
+offset_top = 98.0
+offset_right = 1071.0
+offset_bottom = 582.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xcua2")
+
+[node name="Panel_Label" type="Label" parent="Control/Controls Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = 16.0
+offset_right = 75.0
+offset_bottom = 42.0
+grow_horizontal = 2
+text = "- Vibration Values - "
+
+[node name="High Vibration Container" type="Control" parent="Control/Controls Panel"]
+layout_mode = 1
+anchor_top = 0.159
+anchor_right = 1.0
+anchor_bottom = 0.159
+offset_left = 4.0
+offset_top = -23.956
+offset_right = -5.0
+offset_bottom = 24.044
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control/Controls Panel/High Vibration Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bdhbx")
+
+[node name="Label" type="Label" parent="Control/Controls Panel/High Vibration Container/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.5
+offset_top = -13.0
+offset_right = 16.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "High Motor Value:"
+
+[node name="HighVibration_SpinBox" type="SpinBox" parent="Control/Controls Panel/High Vibration Container/Panel"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 8.0
+offset_right = 235.063
+offset_bottom = 39.0
+max_value = 1000.0
+alignment = 1
+
+[node name="Low Vibration Container" type="Control" parent="Control/Controls Panel"]
+layout_mode = 1
+anchor_top = 0.159
+anchor_right = 1.0
+anchor_bottom = 0.159
+offset_left = 4.0
+offset_top = 39.044
+offset_right = -5.0
+offset_bottom = 87.044
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control/Controls Panel/Low Vibration Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bdhbx")
+
+[node name="Label" type="Label" parent="Control/Controls Panel/Low Vibration Container/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.5
+offset_top = -13.0
+offset_right = 16.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Low Motor Value:"
+
+[node name="LowVibration_SpinBox" type="SpinBox" parent="Control/Controls Panel/Low Vibration Container/Panel"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 9.0
+offset_right = 235.063
+offset_bottom = 40.0
+max_value = 1000.0
+alignment = 1
+
+[node name="Duration Container" type="Control" parent="Control/Controls Panel"]
+layout_mode = 1
+anchor_top = 0.159
+anchor_right = 1.0
+anchor_bottom = 0.159
+offset_left = 4.0
+offset_top = 104.044
+offset_right = -5.0
+offset_bottom = 152.044
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control/Controls Panel/Duration Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bdhbx")
+
+[node name="Duration_Label" type="Label" parent="Control/Controls Panel/Duration Container/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.5
+offset_top = -13.0
+offset_right = 16.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = "Vibration Duration:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Duration_SpinBox" type="SpinBox" parent="Control/Controls Panel/Duration Container/Panel"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 9.0
+offset_right = 235.063
+offset_bottom = 40.0
+max_value = 10.0
+step = 0.1
+alignment = 1
+
+[node name="Device ID Container" type="Control" parent="Control/Controls Panel"]
+layout_mode = 1
+anchor_top = 0.159
+anchor_right = 1.0
+anchor_bottom = 0.159
+offset_left = 4.0
+offset_top = 169.044
+offset_right = -5.0
+offset_bottom = 217.044
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control/Controls Panel/Device ID Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bdhbx")
+
+[node name="DeviceID_Label" type="Label" parent="Control/Controls Panel/Device ID Container/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.5
+offset_top = -13.0
+offset_right = 16.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = "Device ID:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeviceID_SpinBox" type="SpinBox" parent="Control/Controls Panel/Device ID Container/Panel"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 9.0
+offset_right = 235.063
+offset_bottom = 40.0
+max_value = 8.0
+alignment = 1
+
+[node name="TestVibration_Button" type="Button" parent="Control/Controls Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -117.5
+offset_top = -108.0
+offset_right = 118.5
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Test Vibration"
+
+[node name="StopVibration_Button" type="Button" parent="Control/Controls Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -106.5
+offset_top = -53.0
+offset_right = 106.5
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Stop Vibration"
+
+[node name="File Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 483.0
+offset_top = 98.0
+offset_right = 757.0
+offset_bottom = 582.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xcua2")
+
+[node name="Panel_Label" type="Label" parent="Control/File Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = 16.0
+offset_right = 75.0
+offset_bottom = 42.0
+grow_horizontal = 2
+text = "- Save Presets - "
+horizontal_alignment = 1
+
+[node name="SavePreset_Button" type="Button" parent="Control/File Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -117.5
+offset_top = -108.0
+offset_right = 118.5
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Save Preset"
+
+[node name="OpenPreset_Button" type="Button" parent="Control/File Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -106.5
+offset_top = -53.0
+offset_right = 106.5
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Open Preset"
+
+[node name="OpenPreset_FileDialog" type="FileDialog" parent="Control/File Panel"]
+title = "Open a File"
+size = Vector2i(392, 162)
+ok_button_text = "Open"
+file_mode = 0
+
+[node name="Name Holder" type="Control" parent="Control/File Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -141.0
+offset_right = 137.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/File Panel/Name Holder"]
+layout_mode = 1
+offset_left = 20.0
+offset_top = -30.0
+offset_right = 60.0
+offset_bottom = -4.0
+text = "Preset Name:"
+
+[node name="Name_TextEdit" type="TextEdit" parent="Control/File Panel/Name Holder"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -16.0
+offset_right = 125.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "poop"
+scroll_past_end_of_file = true
+
+[node name="Path Holder" type="Control" parent="Control/File Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -52.0
+offset_right = 137.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/File Panel/Path Holder"]
+layout_mode = 1
+offset_left = 20.0
+offset_top = -30.0
+offset_right = 60.0
+offset_bottom = -4.0
+text = "Preset Path:"
+
+[node name="PathOutput_TextEdit" type="TextEdit" parent="Control/File Panel/Path Holder"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -16.0
+offset_right = 65.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "poop"
+
+[node name="Button" type="Button" parent="Control/File Panel/Path Holder"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 4.0
+offset_right = 262.0
+offset_bottom = 35.0
+text = "Select"
+
+[node name="Output Panel" type="Panel" parent="Control"]
+layout_mode = 1
+offset_left = 41.0
+offset_top = 118.0
+offset_right = 410.0
+offset_bottom = 347.0
+scale = Vector2(1.135, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_s58xr")
+
+[node name="Xbox_TextureRect" type="TextureRect" parent="Control/Output Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_31wmk")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Output Panel/Xbox_TextureRect"]
+libraries = {
+"": SubResource("AnimationLibrary_14dkj")
+}
+
+[node name="Output Console Panel" type="Panel" parent="Control/Output Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.5
+offset_top = 131.5
+offset_right = 140.5
+offset_bottom = 225.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.135, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_s58xr")
+
+[node name="VibrationOutput_Label" type="RichTextLabel" parent="Control/Output Panel/Output Console Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.5
+offset_top = -37.5
+offset_right = 159.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "Vibration Output..."
+fit_content = true
+scroll_active = false

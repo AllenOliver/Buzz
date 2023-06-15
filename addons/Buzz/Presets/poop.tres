@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="VibrationPreset" load_steps=2 format=3 uid="uid://bt0kbierrl4cd"]
+
+[ext_resource type="Script" path="res://addons/Buzz/scripts/Data Objects/Presets/VibrationPreset.gd" id="1_labh1"]
+
+[resource]
+script = ExtResource("1_labh1")
+PresetName = "poop"
+LowMotorSpeed = 200
+HighMotorSpeed = 200
+VibrationDuration = 0.3

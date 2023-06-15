@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://clxsk2bksmw20"]
+
+[ext_resource type="Script" path="res://addons/Buzz/scripts/Buzz.gd" id="1_w1wir"]
+
+[node name="Buzz" type="Node"]
+script = ExtResource("1_w1wir")
+
+[node name="Vibration Timer" type="Timer" parent="."]
+one_shot = true
