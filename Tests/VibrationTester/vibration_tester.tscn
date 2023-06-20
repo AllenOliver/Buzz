@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsah1nkbnqux8"]
+[gd_scene load_steps=11 format=3 uid="uid://bedc4442a212o"]
 
-[ext_resource type="Script" path="res://addons/Buzz/scripts/Tests/VibrationTester.gd" id="1_v2qtc"]
-[ext_resource type="Texture2D" uid="uid://c83uicuuq6tcg" path="res://addons/Buzz/Zacksly_Icons/Xbox Series Button Icons and Controls/Controller Images/Outline/Outline White 4k.png" id="2_31wmk"]
+[ext_resource type="Script" path="res://Tests/VibrationTester/VibrationTester.gd" id="1_v2qtc"]
+[ext_resource type="Texture2D" uid="uid://c83uicuuq6tcg" path="res://Tests/Zacksly_Icons/Xbox Series Button Icons and Controls/Controller Images/Outline/Outline White 4k.png" id="2_31wmk"]
 
 [sub_resource type="Curve" id="Curve_60ps4"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.519802, 0.990909), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

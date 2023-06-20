@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="VibrationPreset" load_steps=2 format=3 uid="uid://bt0kbierrl4cd"]
+
+[ext_resource type="Script" path="res://addons/Buzz/scripts/Data Objects/Presets/VibrationPreset.gd" id="1_vb4b6"]
+
+[resource]
+script = ExtResource("1_vb4b6")
+PresetName = "QuickBurst"
+LowMotorSpeed = 5
+HighMotorSpeed = 5
+VibrationDuration = 0.1

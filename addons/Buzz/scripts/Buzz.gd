@@ -22,8 +22,6 @@ func _ready():
 	Input.joy_connection_changed.connect(OnJoypadsUpdated)
 	if !VibrationEnabled: Disable()
 	
-	
-		
 
 ## WIP; Not functional
 func TryVibrateFromCurve(_Device: int, CurveLow: Curve, CurveHigh: Curve, _Duration: float)-> bool:
@@ -68,7 +66,7 @@ func TryVibrationPreset(Device: int, Preset: VibrationPreset)-> bool:
 	return false
 
 ## Stops the specified device from vibrating
-func StopVibration(Device: int)-> void:
+func StopVibration(Device: int = 0)-> void:
 	if IsVibrating:
 		IsVibrating = false
 		_vibrationTimer.stop()
@@ -96,8 +94,11 @@ func CreateNewPreset(PresetName: String, LowMotorSpeed: int, HighMotorSpeed: int
 	
 	return _newPreset
 	
-## Tries to save a [VibrationPreset] preset data object to the file system.
+## Tries to save a [VibrationPreset] preset data object to the file system. Only works in editor.
 func TrySaveNewPreset(Path: String, NewPreset: VibrationPreset)-> bool:
+	if !Engine.is_editor_hint():
+		return false 
+		
 	if ResourceSaver.save(NewPreset, Path) == OK:
 		return true
 	else:
@@ -109,7 +110,7 @@ func Enable()-> void: VibrationEnabled = true
 ## Disables [Buzz]
 func Disable()-> void: VibrationEnabled = false
 
-## Enables [Buzz]
+## Checks if [Buzz] is enabled.
 func IsEnabled()-> bool: return VibrationEnabled  
 
 ## Checks if a vibration can be preformed

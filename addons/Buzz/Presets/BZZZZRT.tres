@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="VibrationPreset" load_steps=2 format=3 uid="uid://dwu0oc0hxnm5m"]
+
+[ext_resource type="Script" path="res://addons/Buzz/scripts/Data Objects/Presets/VibrationPreset.gd" id="1_od5bl"]
+
+[resource]
+script = ExtResource("1_od5bl")
+PresetName = "BZZZZRT"
+LowMotorSpeed = 200
+HighMotorSpeed = 200
+VibrationDuration = 0.2
