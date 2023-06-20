@@ -4,18 +4,20 @@ extends Node
 
 class_name Buzz
 
-## Called when 
+## Called when a vibration starts.
 signal OnVibrationBegin
+
+## Called when a vibration ends.
 signal OnVibrationEnd
 
-@onready var _vibrationTimer: Timer = $"Vibration Timer"
+@onready var _vibrationTimer	: Timer = $"Vibration Timer"
+@export var VibrationEnabled	: bool = true
 
-@export var VibrationEnabled: bool = true
+var IsVibrating					: bool = false
+var ConnectedJoysticks			: Array[int]
+var _tweenValue					: float = 0.0
 
-var IsVibrating: bool = false
-var ConnectedJoysticks: Array[int]
-var _tweenValue:float = 0.0
-			
+
 func _ready():
 	_vibrationTimer.one_shot = true
 	_vibrationTimer.timeout.connect(OnResetVibrationTimer)
