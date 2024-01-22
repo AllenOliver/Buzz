@@ -1,3 +1,3 @@
 # Buzz
-A Godot 4 Plugin for haptics and vibrations.
+A Godot 4 Plugin for haptics and vibrations. WIP
 
